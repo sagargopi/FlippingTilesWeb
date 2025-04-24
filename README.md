@@ -56,21 +56,6 @@ npm start
 
 ---
 
-## Uploading to GitHub
-1. Create a new repository on GitHub.
-2. In the project root, run:
-   ```sh
-   git init
-   git add .
-   git commit -m "Initial commit: Flipping Tiles Web App"
-   git remote add origin https://github.com/<your-username>/<repo-name>.git
-   git branch -M main
-   git push -u origin main
-   ```
-3. (Optional) Add a `.gitignore` file to exclude `node_modules`, `build`, and other unnecessary files.
-
----
-
 ## Customization
 - To change the emoji set, edit the `SYMBOLS` array in `frontend/src/App.js`.
 - To adjust the grid size, modify the `GRID_SIZE` constant in `frontend/src/App.js` (default is 4).
