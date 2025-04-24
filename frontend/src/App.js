@@ -59,6 +59,12 @@ function App() {
   }, [running, win]);
 
   useEffect(() => {
+    fetch(`${BASE_URL}/scores`)
+      .then(res => res.json())
+      .then(setScores);
+  }, []);
+
+  useEffect(() => {
     if (matched.length === tiles.length) {
       setRunning(false);
       setWin(true);
@@ -67,7 +73,7 @@ function App() {
 
   useEffect(() => {
     if (win) {
-      fetch('http://localhost:8080/scores')
+      fetch(`${BASE_URL}/scores`)
         .then(res => res.json())
         .then(setScores);
     }
@@ -104,13 +110,18 @@ function App() {
 
   const [scoreSubmitted, setScoreSubmitted] = useState(false);
 
+// Set your backend API URL here
+const BASE_URL = process.env.NODE_ENV === 'production'
+  ? 'https://YOUR-BACKEND-DEPLOYMENT-URL' // e.g., https://flipping-tiles-backend.onrender.com
+  : 'http://localhost:8080';
+
 const handleSubmitScore = () => {
-    fetch('http://localhost:8080/scores', {
+    fetch(`${BASE_URL}/scores`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ playerName, moves, timeSeconds: timer })
     })
-      .then(() => fetch('http://localhost:8080/scores'))
+      .then(() => fetch(`${BASE_URL}/scores`))
       .then(res => res.json())
       .then(scores => {
         setScores(scores);
