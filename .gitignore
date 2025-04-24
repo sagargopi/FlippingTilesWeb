@@ -1,0 +1,26 @@
+# Node modules (frontend)
+frontend/node_modules/
+
+# Build output (frontend)
+frontend/build/
+
+# IDE/editor settings
+*.iml
+.idea/
+.vscode/
+.DS_Store
+
+# OS generated files
+Thumbs.db
+
+# Maven target (backend)
+backend/target/
+
+# Environment files
+.env
+
+# Logs
+*.log
+
+# Misc
+*.swp
